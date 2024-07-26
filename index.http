@@ -1,0 +1,12 @@
+POST http://localhost:3000/addTransaction
+Content-Type: application/json
+
+{
+    "description": "Credited to office account",
+    "type": "credit",
+    "amount":"5000"
+}
+
+####
+
+GET http://localhost:3000/getTransactions
