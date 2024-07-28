@@ -2,9 +2,9 @@ POST http://localhost:3000/addTransaction
 Content-Type: application/json
 
 {
-    "description": "expenses",
-    "type": "Debit",
-    "amount":"200"
+    "description": "Credits",
+    "type": "Credit",
+    "amount":"500"
 }
 
 ####
