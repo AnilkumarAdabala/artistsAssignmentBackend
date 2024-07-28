@@ -6,6 +6,7 @@ const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
 app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 
 
@@ -35,7 +36,7 @@ app.post('/addTransaction', async (request, response) => {
     try {
         const transactionData = request.body;
         const { description, type, amount } = transactionData;
-
+        console.log(transactionData)
         // Fetch the current balance from the database
         const balanceQuery = `SELECT balance FROM transactions ORDER BY id DESC LIMIT 1`;
         const lastTransaction = await db.get(balanceQuery);
