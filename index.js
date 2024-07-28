@@ -9,6 +9,13 @@ app.use(cors());
 app.options('*', cors());
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // Allow any origin
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+  });
+  
 
 const dbPath = path.join(__dirname, "database.db");
 
@@ -21,8 +28,8 @@ const initializeDBAndServer = async () => {
             driver: sqlite3.Database
         })
 
-        app.listen(3000, () => {
-            console.log("Server is Running at http://localhost:3000/");
+        app.listen(5000, () => {
+            console.log("Server is Running at http://localhost:5000/");
         })
     } catch (e) {
         console.log(`DB Error: ${e.message}`);
